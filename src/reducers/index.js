@@ -39,12 +39,12 @@ export const reducer = (state = initialState, action) => {
 			return {
 				...state,
 				smurfs: [...state.smurfs, addSmurf],
-				error: '',
+				error: 'Could not get that infomation',
 			};
 		case SET_ERROR:
 			return {
 				...state,
-				errormessage: action.payload,
+				errorMessage: action.payload,
 			};
 		default:
 			return state;

@@ -10,6 +10,9 @@ import { connect } from 'react-redux';
 import { getSmurfs } from './actions';
 
 class App extends Component {
+	componentDidMount() {
+		getSmurfs();
+	}
 	render() {
 		return (
 			<div className='App'>
@@ -24,7 +27,7 @@ class App extends Component {
 	}
 }
 
-export default App;
+export default connect(null, getSmurfs)(App);
 
 //Task List:
 //1. Connect the fetchSmurfs actions to the App component.

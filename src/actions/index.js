@@ -14,14 +14,14 @@ export const getSmurfs = () => (dispatch) => {
 			dispatch({ type: FETCHING_SUCCESS, payload: res.data });
 		})
 		.catch((err) => {
-			dispatch({ type: FETCHING_FAIL, payload: err });
+			dispatch({ type: FETCHING_FAIL, payload: err.res.data });
 		});
 };
 
-export const addSmurf = ({ name, position, nickname, summary }) => {
+export const addSmurf = ({ name, position, nickname, description }) => {
 	return {
 		type: ADD_SMURFS,
-		payload: { name, nickname, position, summary },
+		payload: { name, position, nickname, description },
 	};
 };
 export const errorMessage = (message) => {
