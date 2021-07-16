@@ -1,11 +1,55 @@
+import {
+	FETCHING_START,
+	FETCHING_SUCCESS,
+	FETCHING_FAIL,
+	ADD_SMURFS,
+	SET_ERROR,
+} from '../actions';
 
 export const initialState = {
-}
+	smurfs: [],
+	loading: false,
+	error: '',
+};
 
-const reducer = ()=>{
-}
-
-export default reducer;
+export const reducer = (state = initialState, action) => {
+	switch (action.type) {
+		case FETCHING_START:
+			return {
+				...state,
+				loading: true,
+				error: '',
+			};
+		case FETCHING_SUCCESS:
+			return {
+				...state,
+				loading: false,
+				smurfs: action.payload,
+			};
+		case FETCHING_FAIL:
+			return {
+				...state,
+				loading: false,
+				error: action.payload,
+			};
+		case ADD_SMURFS:
+			const addSmurf = {
+				...action.payload,
+			};
+			return {
+				...state,
+				smurfs: [...state.smurfs, addSmurf],
+				error: '',
+			};
+		case SET_ERROR:
+			return {
+				...state,
+				errormessage: action.payload,
+			};
+		default:
+			return state;
+	}
+};
 
 //Task List:
 //1. Adds the following state values into the initialState:
